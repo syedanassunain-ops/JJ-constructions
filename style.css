@@ -397,6 +397,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   border-radius: 20px;
   overflow: hidden;
   background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .showroom-photo img {
   width: 100%; height: auto;
@@ -780,6 +784,17 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   /* showroom-photo: auto height, no crop on mobile */
+  .showroom-photo {
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .showroom-photo img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
   .form-row { flex-direction: column; gap: 0; }
   .contact-heading { font-size: clamp(2rem, 8vw, 3.5rem); }
 }

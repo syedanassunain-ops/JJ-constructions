@@ -82,29 +82,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ── Counter animation ──
+    // ── Counter animation (Buttery-smooth 1.5-second easing) ──
     const counters = document.querySelectorAll('.counter');
     const animateCounters = () => {
         counters.forEach(c => {
             const target = +c.dataset.target;
-            const update = () => {
-                const current = +c.innerText;
-                const inc = target / 80;
-                if (current < target) {
-                    c.innerText = Math.ceil(current + inc);
-                    setTimeout(update, 25);
+            const duration = 1500; // exactly 1.5 seconds
+            let startTime = null;
+
+            const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+            const step = (timestamp) => {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const eased = easeOutCubic(progress);
+                c.innerText = Math.floor(eased * target);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
                 } else {
                     c.innerText = target + '+';
                 }
             };
-            update();
+            requestAnimationFrame(step);
         });
     };
     const statsEl = document.querySelector('.about-stats');
     if (statsEl) {
         const obs = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) { animateCounters(); obs.disconnect(); }
-        }, { threshold: 0.5 });
+        }, { threshold: 0.1 });
         obs.observe(statsEl);
     }
 
@@ -230,11 +236,11 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener("submit", async function(event) {
             event.preventDefault();
             
-            statusMsg.textContent = "Sending your enquiry...";
+            statusMsg.textContent = "";
             statusMsg.className = "form-status-msg";
             const btn = contactForm.querySelector(".submit-btn-grand");
             const originalBtnText = btn.innerHTML;
-            btn.innerHTML = "Sending...";
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
 
             try {
@@ -245,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    statusMsg.innerHTML = "Thank you! Your enquiry has been received successfully. Our team will contact you shortly.";
-                    statusMsg.classList.add("success");
+                    statusMsg.textContent = "Thank you. We'll be in touch within 24 hours.";
+                    statusMsg.className = "form-status-msg success";
                     contactForm.reset();
                 } else {
                     const data = await response.json();
@@ -255,15 +261,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         statusMsg.textContent = "Oops! There was a problem submitting your form.";
                     }
-                    statusMsg.classList.add("error");
+                    statusMsg.className = "form-status-msg error";
                 }
             } catch (error) {
                 statusMsg.textContent = "Oops! There was a network problem submitting your form.";
-                statusMsg.classList.add("error");
+                statusMsg.className = "form-status-msg error";
             } finally {
                 btn.innerHTML = originalBtnText;
                 btn.disabled = false;
             }
         });
-    }
+     }
 });

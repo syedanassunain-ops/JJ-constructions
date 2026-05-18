@@ -1,0 +1,5 @@
+# Ignore business information files and model artifacts
+DOC-20250701-WA0111..pdf
+pdf_content.txt
+.gemini/
+*.log
