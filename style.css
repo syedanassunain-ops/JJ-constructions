@@ -908,7 +908,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   100% { transform: scale(1.6); opacity: 0; }
 }
 
-/* ---- PREMIUM DESIGN STUDIO SHOWROOM (Task 3) ---- */
+/* ---- PREMIUM DESIGN STUDIO SHOWROOM (Task 3 & Widescreen Optimization) ---- */
 .showroom-section {
   background: #0f0f0f;
   color: var(--white);
@@ -916,51 +916,76 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   overflow: hidden;
   border-top: 1px solid rgba(255,255,255,0.05);
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: clamp(60px, 8vw, 120px) 0;
 }
-.showroom-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+.showroom-header {
+  max-width: 800px;
+  margin-bottom: 50px;
 }
-.showroom-left {
-  position: relative;
-}
-.showroom-img-wrap {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.08);
-  transform: scale(1.03) translateX(10px);
-  z-index: 3;
-  transition: transform 0.6s var(--ease);
-}
-.showroom-img-wrap img {
-  width: 100%;
-  height: 620px;
-  object-fit: cover;
-  transition: transform 1s var(--ease);
-}
-.showroom-img-wrap:hover img {
-  transform: scale(1.04);
-}
-.showroom-right {
-  position: relative;
-  z-index: 2;
+.showroom-header .section-title {
+  margin-bottom: 20px;
 }
 .showroom-intro {
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   font-weight: 300;
   color: rgba(255,255,255,0.55);
   line-height: 1.8;
-  margin: 25px 0 35px;
+  margin: 20px 0 0;
+}
+.showroom-banner {
+  margin-bottom: 60px;
+  width: 100%;
+}
+.showroom-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border: 1px solid rgba(201,168,76,0.3);
+  transition: transform 0.6s var(--ease);
+  z-index: 2;
+}
+
+.showroom-img-wrap img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+
+.showroom-img-wrap:hover img {
+  transform: scale(1.02);
+}
+.showroom-details-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.showroom-map-block {
+  width: 100%;
+}
+.showroom-map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.4);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+.showroom-map-container iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+}
+.showroom-details-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .showroom-details {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 30px;
+  gap: 25px;
+  margin-bottom: 35px;
 }
 .showroom-info-item {
   display: flex;
@@ -969,18 +994,22 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .showroom-info-item i {
   color: var(--accent);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-top: 4px;
 }
 .showroom-info-item address {
   font-style: normal;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: rgba(255,255,255,0.85);
+}
+.showroom-info-item address strong {
+  color: #c9a84c;
+  font-size: 1.15rem;
 }
 .showroom-info-item .phone-link {
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 500;
   color: var(--white);
   transition: color 0.3s ease;
@@ -988,20 +1017,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .showroom-info-item .phone-link:hover {
   color: var(--accent);
 }
-.showroom-map-container {
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(201,168,76,0.4);
-  margin-bottom: 30px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-}
-.showroom-map-container iframe {
-  display: block;
-}
 .showroom-dir-btn {
   display: inline-block;
   width: 100%;
-  max-width: 250px;
+  max-width: 280px;
 }
 
 /* ---- MARQUEE LABELS HOVER EFFECT (Task 6) ---- */
@@ -1147,11 +1166,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* ---- RESPONSIVE ---- */
 @media (max-width: 1024px) {
   .about-grid, .why-grid { grid-template-columns: 1fr; }
-  .showroom-grid { grid-template-columns: 1fr; gap: 40px; }
+  .showroom-details-grid { grid-template-columns: 1fr; gap: 40px; }
   .showroom-img-wrap { transform: scale(1) translateX(0); }
-  .showroom-img-wrap img { height: 400px; }
-  .showroom-top-right { padding-top: 0; }
-  .showroom-photo { border-radius: 14px; }
+  .showroom-img-wrap img { height: 280px; }
   .service-row { grid-template-columns: 1fr; }
   .service-row.reverse .service-img { order: 0; }
   .service-img { min-height: 350px; }
@@ -1242,7 +1259,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   
-  .showroom-img-wrap img { height: 320px; }
+  .showroom-img-wrap img { height: 220px; }
   .form-row { flex-direction: column; gap: 0; }
   .contact-heading { font-size: clamp(2rem, 8vw, 3.5rem); }
 

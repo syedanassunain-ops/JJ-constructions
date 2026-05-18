@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Buttery Smooth IntersectionObserver scroll animations (Task 10) ──
     const scrollAnimateElements = document.querySelectorAll(
-        '.section-title, .section-tag, .service-card, .test-card, .process-step, .showroom-left, .showroom-right'
+        '.section-title, .section-tag, .service-card, .test-card, .process-step, .showroom-banner, .showroom-map-block, .showroom-details-block'
     );
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.1,
+        threshold: 0.01,
         rootMargin: '0px 0px -50px 0px'
     });
 
