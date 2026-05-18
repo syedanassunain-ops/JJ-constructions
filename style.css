@@ -1206,28 +1206,37 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   }
   .btn { width: 100%; }
 
-  /* Gallery Forced 2-Column Grid Layout on Mobile (Task 12) */
+  /* Gallery — Horizontal Swipe Scroll on Mobile */
   .marquee-gallery {
     display: block !important;
     margin-top: 40px !important;
   }
   .marquee-track {
-    overflow: visible !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important; /* smooth momentum scroll on iOS */
+    scroll-snap-type: x mandatory !important;
     animation: none !important;
   }
+  /* Hide scrollbar visually but keep functionality */
+  .marquee-track::-webkit-scrollbar { display: none !important; }
+  .marquee-track { scrollbar-width: none !important; }
   .marquee-slides {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
     animation: none !important;
-    width: 100% !important;
+    width: max-content !important;
+    padding: 0 16px 16px !important;
   }
   .marquee-slides .m-item {
-    width: 100% !important;
-    height: 180px !important;
+    width: 280px !important;
+    height: 200px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: start !important;
   }
-  /* Hide the duplicate images on mobile to maintain clean performance */
-  .marquee-slides .m-item:nth-child(n+9) {
+  /* Hide the duplicate images on mobile */
+  .marquee-slides .m-item:nth-child(n+17) {
     display: none !important;
   }
 
