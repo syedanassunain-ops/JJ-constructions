@@ -616,7 +616,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* For pure CSS parallax that doesn't break fixed layouts */
 @media (min-width: 1024px) {
     .contact-reveal {
-        background-image: url('assets/WhatsApp Image 2026-05-12 at 2.48.01 PM.jpeg');
+        background-image: url('assets/premium-interior-finish.jpg');
         background-attachment: fixed;
         background-position: center;
         background-size: cover;
@@ -838,8 +838,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   50% { transform: translateY(6px); opacity: 0.8; }
 }
 
-/* ---- FLOATING WHATSAPP BUTTON (Task 1) ---- */
-.whatsapp-float {
+/* ---- FLOATING CHAT BUTTON (Task 1) ---- */
+.wa-float {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -858,7 +858,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   padding: 0;
   width: 56px;
 }
-.whatsapp-float .wa-icon-wrap {
+.wa-float .wa-icon-wrap {
   width: 56px;
   height: 56px;
   display: flex;
@@ -868,7 +868,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   z-index: 2;
   color: #fff;
 }
-.whatsapp-float .wa-text {
+.wa-float .wa-text {
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;
@@ -884,12 +884,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   order: -1;
   color: #fff;
 }
-.whatsapp-float:hover {
+.wa-float:hover {
   width: 280px;
   border-radius: 30px;
   padding-left: 20px;
 }
-.whatsapp-float:hover .wa-text {
+.wa-float:hover .wa-text {
   opacity: 1;
   max-width: 210px;
   padding-right: 12px;
@@ -1280,7 +1280,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .back-top {
     bottom: 105px !important;
   }
-  .whatsapp-float {
+  .wa-float {
     bottom: 30px !important;
     right: 20px !important;
   }
