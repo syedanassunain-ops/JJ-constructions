@@ -153,24 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbCounter = document.getElementById('lbCounter');
-    // Only pick original images (first half of each marquee track), not duplicates
-    const allMarqueeImgs = document.querySelectorAll('.m-item img');
-    const seenSrcs = new Set();
-    const uniqueImgs = [];
-    allMarqueeImgs.forEach(img => {
-        if (!seenSrcs.has(img.src)) {
-            seenSrcs.add(img.src);
-            uniqueImgs.push(img);
-        }
-    });
+    const galleryImgs = document.querySelectorAll('.gallery-item img');
     let currentIdx = 0;
-    const imgSrcs = uniqueImgs.map(img => img.src);
+    const imgSrcs = Array.from(galleryImgs).map(img => img.src);
 
-    // Attach click to ALL images (including duplicates), mapped to unique index
-    allMarqueeImgs.forEach(img => {
+    // Attach click listener to each gallery image
+    galleryImgs.forEach((img, idx) => {
         img.addEventListener('click', () => {
-            const idx = imgSrcs.indexOf(img.src);
-            if (idx !== -1) openLightbox(idx);
+            openLightbox(idx);
         });
     });
 
@@ -181,14 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
         // Pause Lenis scroll
-        if (lenis) lenis.stop();
+        if (typeof lenis !== 'undefined') lenis.stop();
     }
 
     function closeLightbox() {
         lightbox.classList.remove('open');
         document.body.style.overflow = '';
         // Resume Lenis scroll
-        if (lenis) lenis.start();
+        if (typeof lenis !== 'undefined') lenis.start();
     }
 
     function nextImg() {
@@ -203,13 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateLbImg() {
         lbImg.style.opacity = '0';
-        lbImg.style.transform = 'scale(0.92)';
+        lbImg.style.transform = 'scale(0.95)';
         setTimeout(() => {
             lbImg.src = imgSrcs[currentIdx];
             lbCounter.textContent = `${currentIdx + 1} / ${imgSrcs.length}`;
             lbImg.style.opacity = '1';
             lbImg.style.transform = 'scale(1)';
-        }, 200);
+        }, 150);
     }
 
     // Lightbox controls
@@ -326,3 +316,5 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 });
+
+
