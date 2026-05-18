@@ -1049,33 +1049,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   transition: opacity 0.4s var(--ease);
   z-index: 1;
 }
-.m-item::after {
-  content: attr(data-label);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 25px;
-  color: #e8c879; /* Brighter, premium luxury gold */
-  font-family: var(--font-heading);
-  font-size: 1.05rem; /* Slightly larger, more readable */
-  font-weight: 600; /* Bolder for premium contrast */
-  letter-spacing: 2.5px; /* Elegant letter spacing */
-  text-transform: uppercase;
-  z-index: 2;
-  transform: translateY(10px);
-  opacity: 0;
-  transition: all 0.4s var(--ease);
-  border-bottom: 2px solid #e8c879;
-  text-align: left;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Classy drop shadow for ultra-readability */
-}
 .m-item:hover::before {
   opacity: 1;
-}
-.m-item:hover::after {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* ---- LIGHTWEIGHT INTERSECTIONOBSERVER TRIGGER (Task 10) ---- */
