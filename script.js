@@ -272,4 +272,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
      }
+
+    // ── Buttery Smooth IntersectionObserver scroll animations (Task 10) ──
+    const scrollAnimateElements = document.querySelectorAll(
+        '.section-title, .section-tag, .service-card, .test-card, .process-step, .showroom-left, .showroom-right'
+    );
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                
+                // Stagger for service-card
+                if (target.classList.contains('service-card')) {
+                    const row = target.closest('.service-row') || target.closest('.services-grid');
+                    if (row) {
+                        const cards = Array.from(row.querySelectorAll('.service-card'));
+                        const index = cards.indexOf(target);
+                        target.style.transitionDelay = `${index * 0.1}s`;
+                    }
+                }
+                
+                // Stagger for process-step
+                if (target.classList.contains('process-step')) {
+                    const row = target.closest('.process-row');
+                    if (row) {
+                        const steps = Array.from(row.querySelectorAll('.process-step'));
+                        const index = steps.indexOf(target);
+                        target.style.transitionDelay = `${index * 0.1}s`;
+                    }
+                }
+
+                // Stagger for test-card
+                if (target.classList.contains('test-card')) {
+                    const slider = target.closest('.swiper-wrapper');
+                    if (slider) {
+                        const cards = Array.from(slider.querySelectorAll('.test-card'));
+                        const index = cards.indexOf(target);
+                        target.style.transitionDelay = `${index * 0.15}s`;
+                    }
+                }
+
+                target.classList.add('animate-in');
+                scrollObserver.unobserve(target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    scrollAnimateElements.forEach(el => {
+        el.classList.add('scroll-trigger');
+        scrollObserver.observe(el);
+    });
 });
