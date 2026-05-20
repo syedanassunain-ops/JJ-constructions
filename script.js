@@ -231,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Formspree Contact Form Submission ──
     const contactForm = document.getElementById("contactForm");
     const statusMsg = document.getElementById("form-status");
+    const formCardContainer = document.getElementById("formCardContainer");
 
     if (contactForm && statusMsg) {
         contactForm.addEventListener("submit", async function(event) {
@@ -238,9 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             statusMsg.textContent = "";
             statusMsg.className = "form-status-msg";
-            const btn = contactForm.querySelector(".submit-btn-grand");
+            const btn = contactForm.querySelector(".submit-btn-luxury");
             const originalBtnText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing Request...';
             btn.disabled = true;
 
             try {
@@ -251,9 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    statusMsg.textContent = "Thank you. We'll be in touch within 24 hours.";
-                    statusMsg.className = "form-status-msg success";
-                    contactForm.reset();
+                    if (formCardContainer) {
+                        formCardContainer.style.opacity = '0';
+                        formCardContainer.style.transform = 'translateY(15px)';
+                        setTimeout(() => {
+                            formCardContainer.innerHTML = `
+                                <div class="luxury-success-screen" style="text-align: center; padding: 40px 20px; animation: fadeInSuccess 0.8s ease forwards;">
+                                    <div class="success-icon-wrap" style="width: 70px; height: 70px; border-radius: 50%; background: rgba(201,168,76,0.1); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; color: var(--accent); font-size: 1.8rem;">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <h3 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 300; letter-spacing: 1px; color: var(--white); margin-bottom: 12px;">Consultation Scheduled</h3>
+                                    <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.7; max-width: 340px; margin: 0 auto 30px;">Thank you for initiating your bespoke interior journey. Our design team will contact you within 24 hours to schedule your exclusive presentation.</p>
+                                    <div style="width: 80px; height: 1px; background: rgba(255,255,255,0.1); margin: 0 auto 25px;"></div>
+                                    <p style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent); font-weight: 500;">Studio Housify Bangalore</p>
+                                </div>
+                            `;
+                            formCardContainer.style.opacity = '1';
+                            formCardContainer.style.transform = 'translateY(0)';
+                        }, 400);
+                    }
                 } else {
                     const data = await response.json();
                     if (Object.hasOwn(data, 'errors')) {
@@ -267,8 +284,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 statusMsg.textContent = "Oops! There was a network problem submitting your form.";
                 statusMsg.className = "form-status-msg error";
             } finally {
-                btn.innerHTML = originalBtnText;
-                btn.disabled = false;
+                if (btn) {
+                    btn.innerHTML = originalBtnText;
+                    btn.disabled = false;
+                }
             }
         });
      }

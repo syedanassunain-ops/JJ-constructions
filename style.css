@@ -613,17 +613,15 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   min-height: 800px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
-  padding: 80px 0;
+  padding: clamp(60px, 8vw, 120px) 0;
 }
 .contact-bg {
   position: absolute; inset: 0; z-index: 0;
 }
 .contact-bg img {
   width: 100%; height: 100%; object-fit: cover;
-  /* Add hardware-accelerated parallax */
   transform: translateZ(0);
 }
-/* For pure CSS parallax that doesn't break fixed layouts */
 @media (min-width: 1024px) {
     .contact-reveal {
         background-image: url('assets/premium-interior-finish.jpg');
@@ -633,80 +631,280 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     }
     .contact-bg { display: none; }
 }
-
 .contact-bg-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: rgba(5, 5, 5, 0.85); /* Much darker cinematic overlay */
+  background: rgba(5, 5, 5, 0.88); /* Deep cinematic background darkener */
 }
-.contact-inner {
-  position: relative; z-index: 2;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  max-width: 900px; width: 100%;
-  padding: clamp(40px, 6vw, 100px) clamp(20px, 4vw, 60px);
-  text-align: center;
-}
-.contact-reveal.revealed .contact-inner {
+
+/* Redesigned Premium Containers & Layout */
+.contact-reveal.revealed .contact-container-custom {
   opacity: 1;
   transform: translateY(0);
 }
-.contact-heading {
+.contact-container-custom {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 60px);
+}
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: center;
+}
+.contact-heading-custom {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  font-weight: 300; line-height: 1.05;
-  color: var(--white); letter-spacing: -1px;
-  margin-bottom: 50px;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--white);
+  letter-spacing: -1px;
+  margin-bottom: 25px;
 }
-.contact-form-grand { 
-  text-align: left; 
-  background: rgba(0, 0, 0, 0.6); 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: clamp(30px, 5vw, 50px); 
-  border: 1px solid rgba(255, 255, 255, 0.15); 
-  border-radius: 8px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+.contact-heading-custom em {
+  font-style: italic;
+  color: var(--accent);
 }
-.form-row { display: flex; gap: 30px; margin-bottom: 0; }
-.form-field-grand { flex: 1; margin-bottom: 28px; }
-.form-field-grand.full { width: 100%; }
-.form-field-grand input,
-.form-field-grand select,
-.form-field-grand textarea {
-  width: 100%; background: transparent; border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  padding: 14px 0; color: var(--white);
-  font-family: var(--font-heading); font-size: 1.05rem; font-weight: 300;
-  font-style: italic; letter-spacing: 0.5px;
-  transition: border-color 0.3s ease;
+.contact-subheading {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 40px;
+  font-weight: 300;
 }
-.form-field-grand input:focus,
-.form-field-grand select:focus,
-.form-field-grand textarea:focus { outline: none; border-color: var(--accent); }
-.form-field-grand input::placeholder,
-.form-field-grand textarea::placeholder { color: rgba(255,255,255,0.35); font-style: italic; }
-.form-field-grand select { color: rgba(255,255,255,0.35); font-style: italic; }
-.form-field-grand select option { color: var(--dark); background: var(--white); font-style: normal; }
-.submit-btn-grand {
-  display: inline-flex; align-items: center; gap: 16px;
-  margin-top: 16px; padding: 16px 45px;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
-  color: var(--white); font-family: var(--font-body);
-  font-size: 0.75rem; font-weight: 500; letter-spacing: 2.5px;
-  text-transform: uppercase; cursor: pointer;
+
+/* Trust Metric Signage */
+.contact-trust-signals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.trust-signal-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 2px solid var(--accent);
+  padding-left: 15px;
+}
+.trust-signal-item .signal-value {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 1px;
+}
+.trust-signal-item .signal-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 1.3;
+}
+
+/* Contact WhatsApp Widget */
+.contact-whatsapp-action {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+.contact-whatsapp-action .wa-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  margin: 0;
+}
+.contact-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 24px;
+  background: #25D366;
+  border-radius: 6px;
+  color: var(--white);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.2);
+  transition: all 0.3s ease;
+}
+.contact-wa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+  background: #20ba59;
+  color: var(--white);
+}
+
+/* Luxury Consultation Form */
+.luxury-form-card {
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  border-radius: 16px;
+  padding: clamp(30px, 5vw, 50px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+.form-card-header {
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 25px;
+}
+.form-card-header h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  margin: 0 0 6px;
+}
+.form-card-header p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+.form-grid-luxury {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+.form-group-luxury {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+.form-group-luxury.full-width {
+  grid-column: 1 / -1;
+}
+.form-group-luxury label {
+  font-size: 0.65rem;
+  color: rgba(201, 168, 76, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+.form-group-luxury input,
+.form-group-luxury select,
+.form-group-luxury textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 14px 18px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  transition: all 0.3s ease;
+}
+.form-group-luxury input:focus,
+.form-group-luxury select:focus,
+.form-group-luxury textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 15px rgba(201, 168, 76, 0.12);
+}
+.form-group-luxury input::placeholder,
+.form-group-luxury textarea::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+  font-style: italic;
+}
+.form-group-luxury select {
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a84c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 14px;
+}
+.form-group-luxury select option {
+  background: #0f0f0f;
+  color: var(--white);
+}
+
+.submit-btn-luxury {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 18px 30px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
   transition: all 0.4s var(--ease);
 }
-.submit-btn-grand:hover {
-  background: var(--white); color: var(--dark); border-color: var(--white);
+.submit-btn-luxury:hover {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(201, 168, 76, 0.15);
 }
 
 .form-status-msg {
-  margin-top: 20px; font-family: var(--font-body); font-size: 0.95rem;
-  letter-spacing: 1px; transition: all 0.4s var(--ease);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.4s var(--ease);
 }
 .form-status-msg.success { color: #4ade80; }
 .form-status-msg.error { color: #f87171; }
+
+/* Responsive Grid Adaptation */
+@media (max-width: 1024px) {
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .contact-info-panel {
+    text-align: center;
+  }
+  .contact-trust-signals-grid {
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+  .trust-signal-item {
+    text-align: left;
+  }
+  .contact-whatsapp-action {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 600px) {
+  .form-grid-luxury {
+    grid-template-columns: 1fr;
+  }
+  .form-group-luxury.full-width {
+    grid-column: auto;
+  }
+}
 
 /* ---- UPGRADED FOOTER & DETAILS (Tasks 9, 4) ---- */
 .footer {
