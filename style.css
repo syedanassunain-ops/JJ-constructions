@@ -321,14 +321,24 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ---- TESTIMONIALS ---- */
 .testimonial-slider { margin-top: 60px; }
-.test-card { background: var(--white); padding: clamp(40px, 5vw, 80px); text-align: center; }
-.test-card blockquote {
-  font-family: var(--font-heading); font-size: clamp(1.2rem, 2vw, 1.7rem);
-  font-weight: 300; font-style: italic; line-height: 1.6;
-  color: var(--charcoal); margin-bottom: 40px;
+.test-card {
+  background: var(--white);
+  padding: clamp(30px, 5vw, 60px) clamp(20px, 4vw, 50px);
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.04);
 }
-.test-card .author { font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; }
-.test-card .role { font-size: 0.7rem; color: var(--mid); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+.test-card blockquote {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--charcoal);
+  margin-bottom: 30px;
+}
+.test-card .author { font-size: 0.78rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dark); }
+.test-card .role { font-size: 0.68rem; color: var(--accent); font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
 .swiper-pagination-bullet { background: var(--mid); }
 .swiper-pagination-bullet-active { background: var(--accent); }
 
