@@ -1347,6 +1347,22 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   color: var(--mid);
   margin-bottom: 20px;
 }
+.founder-desc.highlighted-paragraph {
+  background: rgba(201,168,76,0.06);
+  border-left: 3px solid var(--accent);
+  padding: 22px 26px;
+  border-radius: 0 12px 12px 0;
+  color: var(--dark) !important;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  font-weight: 500;
+  box-shadow: inset 0 0 30px rgba(201,168,76,0.03);
+  margin-bottom: 25px;
+}
+.founder-desc.highlighted-paragraph strong {
+  color: #8c732b;
+  font-weight: 700;
+}
 .about-stats-luxury {
   display: flex;
   gap: 40px;
