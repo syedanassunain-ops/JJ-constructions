@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(step);
         });
     };
-    const statsEl = document.querySelector('.about-stats');
+    const statsEl = document.querySelector('.about-stats') || document.querySelector('.about-stats-luxury');
     if (statsEl) {
         const obs = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) { animateCounters(); obs.disconnect(); }
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Buttery Smooth IntersectionObserver scroll animations (Task 10) ──
     const scrollAnimateElements = document.querySelectorAll(
-        '.section-title, .section-tag, .service-card, .test-card, .process-step, .showroom-banner, .showroom-map-block, .showroom-details-block'
+        '.section-title, .section-tag, .service-card, .test-card, .process-step, .showroom-banner, .showroom-map-block, .showroom-details-block, .trust-card-luxury, .process-luxury-step, .spec-card-luxury'
     );
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -298,6 +298,36 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (row) {
                         const steps = Array.from(row.querySelectorAll('.process-step'));
                         const index = steps.indexOf(target);
+                        target.style.transitionDelay = `${index * 0.1}s`;
+                    }
+                }
+
+                // Stagger for trust-card-luxury
+                if (target.classList.contains('trust-card-luxury')) {
+                    const grid = target.closest('.trust-grid');
+                    if (grid) {
+                        const cards = Array.from(grid.querySelectorAll('.trust-card-luxury'));
+                        const index = cards.indexOf(target);
+                        target.style.transitionDelay = `${index * 0.08}s`;
+                    }
+                }
+
+                // Stagger for process-luxury-step
+                if (target.classList.contains('process-luxury-step')) {
+                    const grid = target.closest('.process-luxury-grid');
+                    if (grid) {
+                        const steps = Array.from(grid.querySelectorAll('.process-luxury-step'));
+                        const index = steps.indexOf(target);
+                        target.style.transitionDelay = `${index * 0.08}s`;
+                    }
+                }
+
+                // Stagger for spec-card-luxury
+                if (target.classList.contains('spec-card-luxury')) {
+                    const grid = target.closest('.specs-grid');
+                    if (grid) {
+                        const cards = Array.from(grid.querySelectorAll('.spec-card-luxury'));
+                        const index = cards.indexOf(target);
                         target.style.transitionDelay = `${index * 0.1}s`;
                     }
                 }
