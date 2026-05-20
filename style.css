@@ -130,9 +130,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   overflow: hidden;
 }
 .hero-video-wrap video {
-  width: 135%; height: 110%; object-fit: cover;
+  width: 150%; height: 110%; object-fit: cover;
   position: absolute;
-  top: 50%; left: -8%; /* Maximum right-side crop: cuts 27% on the right, 8% on the left */
+  top: 50%; left: -5%; /* Ultra-aggressive right-side crop: cuts 45% on the right, 5% on the left */
   transform: translateY(-50%);
 }
 .hero-static-img {
