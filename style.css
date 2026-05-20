@@ -130,9 +130,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   overflow: hidden;
 }
 .hero-video-wrap video {
-  width: 108%; height: 108%; object-fit: cover;
+  width: 120%; height: 110%; object-fit: cover;
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%; left: 42%; /* Reposition horizontally to crop out the right-side watermark cleanly */
   transform: translate(-50%, -50%);
 }
 .hero-static-img {
