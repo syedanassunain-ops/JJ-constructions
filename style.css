@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    STUDIO HOUSIFY — Luxury Architectural Experience
    Inspired by grandeurinteriors.com
    ============================================================ */
@@ -123,7 +123,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   position: relative; height: 100vh; min-height: 700px;
   display: flex; align-items: flex-end;
   overflow: hidden; background: var(--black);
-  position: relative; z-index: 2;
+  z-index: 2;
 }
 .hero-video-wrap {
   position: absolute; inset: 0; z-index: 0;
@@ -132,7 +132,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .hero-video-wrap video {
   width: 135%; height: 135%; object-fit: cover;
   position: absolute;
-  top: -5%; left: -5%; /* Crop 40% of right and bottom edges off-screen to fully hide the bottom-right watermark */
+  top: -5%; left: -5%;
   transform: none;
 }
 .hero-static-img {
@@ -140,13 +140,14 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.7) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.65) 100%);
 }
 .hero-content {
   position: relative; z-index: 2;
-  padding-bottom: clamp(60px, 10vh, 120px);
+  padding-bottom: clamp(70px, 10vh, 120px);
   width: 100%; max-width: 1500px;
-  margin: 0 auto; padding-left: clamp(20px, 4vw, 60px);
+  margin: 0 auto;
+  padding-left: clamp(20px, 4vw, 60px);
   padding-right: clamp(20px, 4vw, 60px);
 }
 .hero-tag {
@@ -157,16 +158,18 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   animation: fadeIn 1s 0.3s var(--ease) forwards;
 }
 .hero-title {
-  font-family: var(--font-heading); font-size: clamp(3rem, 7vw, 6.5rem);
-  font-weight: 300; line-height: 1.05; color: var(--white);
-  margin-bottom: 28px; letter-spacing: -1px;
+  font-family: var(--font-heading); font-size: clamp(1.5rem, 2.8vw, 3.8rem);
+  font-weight: 300; line-height: 1.12; color: var(--white);
+  margin-bottom: 22px; letter-spacing: -0.5px;
   opacity: 0; transform: translateY(30px);
   animation: fadeIn 1.2s 0.5s var(--ease) forwards;
 }
-.hero-title em { font-style: italic; color: rgba(255,255,255,0.65); }
+.hero-line-1 { display: block; white-space: nowrap; }
+.hero-line-2 { display: block; font-style: italic; color: rgba(255,255,255,0.6); white-space: nowrap; }
+
 .hero-sub {
-  font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.55);
-  max-width: 500px; line-height: 1.7;
+  font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.55);
+  max-width: 520px; line-height: 1.75;
   opacity: 0; transform: translateY(20px);
   animation: fadeIn 1s 0.8s var(--ease) forwards;
 }
@@ -189,7 +192,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ---- SECTIONS ---- */
 .section {
-  padding: clamp(80px, 12vw, 180px) 0;
+  padding: clamp(70px, 8vw, 130px) 0;
   position: relative; z-index: 2;
   background: var(--white);
 }
@@ -250,7 +253,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 320px;
-  gap: 4px;
+  gap: 20px;
 }
 .gallery-item {
   position: relative; overflow: hidden; cursor: pointer;
@@ -360,7 +363,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .test-card .verified-tag {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 20px;
   font-size: 0.62rem;
   color: #2e7d32;
   background: #e8f5e9;
@@ -556,7 +559,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .c-item { margin-bottom: 32px; }
 .c-item h5 { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
 .c-item p { font-size: 1.1rem; color: var(--white); line-height: 1.5; margin: 0; }
-.contact-form { padding: clamp(40px, 5vw, 70px); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+.contact-form { padding: clamp(30px, 4vw, 50px); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
 .form-field { margin-bottom: 32px; }
 .form-field input, .form-field select, .form-field textarea {
   width: 100%; background: transparent; border: none;
@@ -618,6 +621,30 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .btn-outline:hover { background: var(--dark); color: var(--white); }
 .btn-light { border: 1px solid rgba(255,255,255,0.2); color: var(--white); }
 .btn-light:hover { background: var(--white); color: var(--dark); }
+
+/* Hero CTA buttons */
+.btn-filled {
+  background: var(--accent);
+  color: var(--white);
+  border: 1px solid var(--accent);
+}
+.btn-filled:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+.btn-outlined {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.35);
+}
+.btn-outlined:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s 1s var(--ease) forwards;
+}
+
 
 /* ---- MOBILE MENU PANEL ---- */
 .mobile-menu {
@@ -1456,7 +1483,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .nav-links, .nav-cta { display: none; }
   .menu-toggle { display: block; }
   .hero { height: 85vh; min-height: 520px; }
-  .hero-content { padding-bottom: 50px; }
+  .hero-content { padding-bottom: 0; }
   .hero-title { font-size: clamp(2.3rem, 9vw, 3.8rem); }
   
   /* Dual CTAs Stack nicely on mobile */
@@ -1569,12 +1596,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .founder-frame {
   position: relative;
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.15);
-  border: 1px solid rgba(201,168,76,0.3);
-  padding: 10px;
-  background: var(--white);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 .founder-photo {
   width: 100%;
@@ -1589,9 +1613,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   right: 30px;
   background: var(--accent);
   color: var(--white);
-  padding: 15px 25px;
+  padding: 12px 20px;
   border-radius: 8px;
-  box-shadow: 0 15px 30px rgba(201,168,76,0.3);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1635,15 +1659,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   margin-bottom: 20px;
 }
 .founder-desc.highlighted-paragraph {
-  background: rgba(201,168,76,0.06);
-  border-left: 3px solid var(--accent);
-  padding: 22px 26px;
-  border-radius: 0 12px 12px 0;
-  color: var(--dark) !important;
-  font-size: 1.08rem;
-  line-height: 1.85;
-  font-weight: 500;
-  box-shadow: inset 0 0 30px rgba(201,168,76,0.03);
+  border-left: 2px solid var(--accent);
+  padding: 15px 25px;
+  color: var(--mid) !important;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-weight: 400;
   margin-bottom: 25px;
 }
 .founder-desc.highlighted-paragraph strong {
@@ -1709,10 +1730,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .trust-card-luxury {
   background: var(--white);
-  border: 1px solid rgba(201,168,76,0.12);
+  border: 1px solid rgba(0,0,0,0.05);
   border-radius: 12px;
   padding: 35px 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  box-shadow: none;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
@@ -1720,14 +1741,14 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .trust-card-luxury:hover {
   transform: translateY(-8px);
-  border-color: rgba(201,168,76,0.45);
-  box-shadow: 0 25px 60px rgba(201,168,76,0.08);
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.04);
 }
 .trust-card-icon-wrap {
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  background: rgba(201,168,76,0.08);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1737,8 +1758,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .trust-card-luxury:hover .trust-card-icon-wrap {
-  background: var(--accent);
-  color: var(--white);
+  background: transparent;
+  color: var(--accent);
 }
 .trust-card-luxury h4 {
   font-family: var(--font-header);
@@ -1755,11 +1776,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 /* ---- PHASE-BASED TIMELINE ROADMAP ---- */
 .process-phase-block {
-  background: var(--white);
-  border-radius: 16px;
-  border: 1px solid rgba(201,168,76,0.15);
-  padding: clamp(30px, 5vw, 60px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.02);
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-radius: 0;
+  padding: 40px 0;
 }
 .phase-header {
   display: flex;
@@ -1858,9 +1879,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   gap: 40px;
 }
 .spec-card-luxury {
-  background: #121212;
+  background: transparent;
   border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 45px 40px;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -1879,8 +1900,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .spec-card-luxury:hover {
   transform: translateY(-8px);
   border-color: rgba(201,168,76,0.35);
-  background: #161616;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  background: transparent;
+  box-shadow: none;
 }
 .spec-card-luxury:hover::before {
   opacity: 1;

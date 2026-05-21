@@ -12,6 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── AOS ──
     AOS.init({ duration: 1000, easing: 'ease-out-cubic', once: true, offset: 80 });
 
+    // ── Ensure Hero Video Plays ──
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        // Attempt to play immediately
+        const playPromise = heroVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.warn("Autoplay prevented by browser, waiting for user interaction.", error);
+                // Fallback: play on first user interaction
+                document.body.addEventListener('click', () => {
+                    heroVideo.play().catch(e => console.log("Still unable to play video.", e));
+                }, { once: true });
+            });
+        }
+    }
+
     // ── Smooth Scrolling for Anchor Links ──
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
