@@ -2053,3 +2053,193 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   transform: rotate(90deg);
 }
 
+
+/* ══════════════════════════════════════════════════════════════════
+   CINEMATIC LUXURY REFINEMENTS — Studio Housify Polish Pass
+   ══════════════════════════════════════════════════════════════════ */
+
+/* --- Hero: richer cinematic overlay --- */
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(6,6,6,0.44) 0%, rgba(6,6,6,0.18) 38%, rgba(6,6,6,0.70) 100%) !important;
+}
+.hero-video-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  backdrop-filter: blur(0.6px);
+  -webkit-backdrop-filter: blur(0.6px);
+  pointer-events: none;
+}
+
+/* --- Hero typography: narrower editorial --- */
+.hero-content { max-width: 760px !important; }
+.hero-title {
+  font-size: clamp(2.6rem, 5.5vw, 5.2rem) !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.08 !important;
+  margin-bottom: 22px !important;
+}
+.hero-sub {
+  font-size: 0.97rem !important;
+  line-height: 1.82 !important;
+  color: rgba(255,255,255,0.48) !important;
+  max-width: 430px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.015em !important;
+}
+.hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+
+/* --- Cinematic grain on dark sections --- */
+.section-dark { position: relative; overflow: hidden; }
+.section-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+.section-dark > * { position: relative; z-index: 2; }
+
+/* --- Gallery marquee: calmer pace --- */
+.marquee-slides { animation-duration: 56s !important; }
+.marquee-track[data-direction="right"] .marquee-slides { animation-duration: 62s !important; }
+
+/* --- Trust cards: softer shadows --- */
+.trust-card-luxury {
+  box-shadow: 0 6px 36px rgba(0,0,0,0.055) !important;
+  transition: box-shadow 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1) !important;
+  border-radius: 10px !important;
+}
+.trust-card-luxury:hover {
+  box-shadow: 0 18px 55px rgba(0,0,0,0.1) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* --- Testimonial card polish --- */
+.test-card {
+  box-shadow: 0 10px 45px rgba(0,0,0,0.05) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  border-radius: 10px !important;
+}
+.test-card blockquote {
+  font-size: clamp(0.95rem, 1.15vw, 1.04rem) !important;
+  line-height: 1.85 !important;
+  font-style: italic !important;
+  color: #3a3a3a !important;
+}
+
+/* --- Pre-form trust section --- */
+.pre-form-trust {
+  background: var(--off-white);
+  padding: clamp(70px, 10vw, 130px) 0 clamp(50px, 6vw, 80px);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.pre-form-trust .container { max-width: 860px; }
+.pre-form-trust h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+  margin-bottom: 24px;
+  color: var(--dark);
+}
+.pre-form-trust h2 em { font-style: italic; color: var(--accent); }
+.pre-form-trust p {
+  font-size: 1rem;
+  color: var(--mid);
+  line-height: 1.88;
+  max-width: 660px;
+  margin: 0 auto 38px;
+  font-weight: 300;
+}
+.pre-form-trust-points {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 36px;
+  margin-top: 12px;
+}
+.trust-point {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.72rem;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--dark);
+}
+.trust-point i { color: var(--accent); font-size: 0.7rem; }
+
+/* --- Brand signature --- */
+.brand-signature {
+  text-align: center;
+  padding: clamp(40px, 6vw, 70px) 0;
+  background: var(--off-white);
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.brand-signature::before {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 1px;
+  background: var(--accent);
+  margin: 0 auto 28px;
+  opacity: 0.55;
+}
+.brand-signature p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--dark);
+  line-height: 1.3;
+}
+.brand-signature span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 14px;
+  font-weight: 500;
+}
+
+/* --- Service: luxurious zoom --- */
+.service-img img { transition: transform 2.4s cubic-bezier(0.16,1,0.3,1) !important; }
+.service-row:hover .service-img img { transform: scale(1.04) !important; }
+
+/* --- FAQ polish --- */
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.06) !important; }
+.faq-q h4 { font-weight: 400 !important; letter-spacing: 0.01em !important; line-height: 1.5 !important; }
+
+/* --- Form focus ring --- */
+.form-group-luxury input:focus,
+.form-group-luxury select:focus,
+.form-group-luxury textarea:focus {
+  box-shadow: 0 0 0 3px rgba(184,151,90,0.13) !important;
+  outline: none !important;
+  border-color: var(--accent) !important;
+}
+.luxury-form-card { box-shadow: 0 20px 60px rgba(0,0,0,0.08) !important; border-radius: 12px !important; }
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+  .hero-content { max-width: 100% !important; }
+  .hero-title { font-size: clamp(2.1rem, 9vw, 3.2rem) !important; }
+  .hero-sub { max-width: 100% !important; }
+  .pre-form-trust-points { flex-direction: column; align-items: center; gap: 14px; }
+  .brand-signature p { font-size: clamp(1.15rem, 5vw, 1.7rem); }
+}
