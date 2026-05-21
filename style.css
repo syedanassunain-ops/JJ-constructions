@@ -2243,3 +2243,174 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .pre-form-trust-points { flex-direction: column; align-items: center; gap: 14px; }
   .brand-signature p { font-size: clamp(1.15rem, 5vw, 1.7rem); }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   FINAL MICRO-LUXURY POLISH — Studio Housify v14
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 1. HERO OVERLAY — EXACT CINEMATIC DEPTH */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.38),
+    rgba(0,0,0,0.22) 45%,
+    rgba(0,0,0,0.52)
+  ) !important;
+}
+
+/* 2. HERO TYPOGRAPHY — ARCHITECTURAL LUXURY EXACT SETTINGS */
+.hero-title {
+  font-size: clamp(2.8rem, 6.5vw, 6rem) !important;
+  font-weight: 350 !important;
+  line-height: 0.97 !important;
+  letter-spacing: -2px !important;
+  max-width: 9ch !important;
+  margin-bottom: 26px !important;
+}
+.hero-tag {
+  font-size: 0.76rem !important;
+  letter-spacing: 3.5px !important;
+  opacity: 0.8 !important;
+  text-transform: uppercase !important;
+  margin-bottom: 28px !important;
+}
+.hero-sub {
+  max-width: 500px !important;
+  line-height: 1.82 !important;
+  opacity: 0.88 !important;
+  font-size: 0.98rem !important;
+  color: rgba(255,255,255,0.72) !important;
+  font-weight: 300 !important;
+}
+
+/* 3. SECTION SPACING — LUXURY BREATHING ROOM (+18%) */
+.section {
+  padding: clamp(110px, 15vw, 220px) 0 !important;
+}
+.section-cream,
+.section-dark {
+  padding: clamp(110px, 15vw, 220px) 0 !important;
+}
+
+/* Extra space above section headings */
+.section-title {
+  margin-bottom: clamp(16px, 2.5vw, 28px);
+}
+
+/* 4. CONSISTENT BORDER RADIUS — 18px everywhere */
+.trust-card-luxury,
+.test-card,
+.luxury-form-card,
+.process-luxury-step,
+.video-card,
+.service-img,
+.faq-item,
+.showroom-img-wrap {
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+.gallery-item { border-radius: 0 !important; } /* intentional: edge-to-edge gallery */
+
+/* 5. SOFT SHADOWS — 0 20px 60px rgba(0,0,0,0.08) */
+.trust-card-luxury { box-shadow: 0 20px 60px rgba(0,0,0,0.08) !important; }
+.test-card { box-shadow: 0 20px 60px rgba(0,0,0,0.07) !important; }
+.luxury-form-card { box-shadow: 0 20px 60px rgba(0,0,0,0.09) !important; }
+
+/* 6. IMAGE FADE-IN — 0.8s soft upward reveal */
+.service-img img,
+.about-img img,
+.showroom-img-wrap img,
+.gallery-item img {
+  opacity: 0;
+  animation: imgReveal 0.8s ease forwards;
+  animation-play-state: paused;
+}
+.service-img img.loaded,
+.about-img img.loaded,
+.showroom-img-wrap img.loaded,
+.gallery-item img.loaded {
+  animation-play-state: running;
+  opacity: 1;
+}
+@keyframes imgReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. WARM LUXURY COLOR ADJUSTMENTS */
+:root {
+  --off-white: #f6f4ef !important; /* warmer cream — beige/parchment */
+  --mid: #8a8078 !important;       /* warm charcoal, not cold grey */
+}
+
+/* Section dividers — very subtle warm line */
+.section + .section,
+.section-cream + .section,
+.section + .section-cream {
+  border-top: 1px solid rgba(0,0,0,0.055);
+}
+
+/* 8. GRAIN TEXTURE on ALL dark sections — 0.03 opacity */
+.section-dark::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px;
+}
+.hero { overflow: hidden; }
+.hero > * { position: relative; z-index: 2; }
+
+/* 9. ANIMATIONS — calmer, slower */
+[data-aos] {
+  transition-duration: 950ms !important;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+/* No excessive bounce or large Y shifts */
+[data-aos="fade-up"] { --aos-translate-y: 22px; }
+
+/* 10. MARQUEE — slightly slower for editorial calm */
+.marquee-slides { animation-duration: 60s !important; }
+.marquee-track[data-direction="right"] .marquee-slides { animation-duration: 66s !important; }
+
+/* 11. HOVER TRANSITIONS — slow, elegant */
+.service-img img { transition: transform 2.5s cubic-bezier(0.16,1,0.3,1) !important; }
+.service-row:hover .service-img img { transform: scale(1.04) !important; }
+.showroom-img-wrap img { transition: transform 2.2s cubic-bezier(0.16,1,0.3,1) !important; }
+.showroom-img-wrap:hover img { transform: scale(1.04) !important; }
+
+/* 12. PROCESS STEP — subtle hover only */
+.process-luxury-step { transition: transform 0.55s cubic-bezier(0.16,1,0.3,1) !important; }
+.process-luxury-step:hover { transform: translateY(-3px) !important; }
+
+/* 13. TRUST CARD HOVER — calm lift */
+.trust-card-luxury { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s cubic-bezier(0.16,1,0.3,1) !important; }
+.trust-card-luxury:hover { transform: translateY(-5px) !important; box-shadow: 0 28px 70px rgba(0,0,0,0.11) !important; }
+
+/* 14. FORM FOCUS — warm gold ring */
+.form-group-luxury input:focus,
+.form-group-luxury select:focus,
+.form-group-luxury textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(184,151,90,0.14) !important;
+  outline: none !important;
+}
+
+/* 15. MOBILE spacing */
+@media (max-width: 768px) {
+  .section,
+  .section-cream,
+  .section-dark {
+    padding: clamp(70px, 14vw, 120px) 0 !important;
+  }
+  .hero-title {
+    font-size: clamp(2.1rem, 9vw, 3.2rem) !important;
+    letter-spacing: -1px !important;
+    max-width: 100% !important;
+  }
+}
