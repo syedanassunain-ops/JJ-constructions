@@ -130,10 +130,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   overflow: hidden;
 }
 .hero-video-wrap video {
-  width: 135%; height: 135%; object-fit: cover;
-  position: absolute;
-  top: -5%; left: -5%;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
   transform: none;
+  display: block;
 }
 .hero-static-img {
   width: 100%; height: 100%; object-fit: cover;
@@ -158,14 +160,14 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   animation: fadeIn 1s 0.3s var(--ease) forwards;
 }
 .hero-title {
-  font-family: var(--font-heading); font-size: clamp(1.5rem, 2.8vw, 3.8rem);
-  font-weight: 300; line-height: 1.12; color: var(--white);
-  margin-bottom: 22px; letter-spacing: -0.5px;
+  font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 4.8rem);
+  font-weight: 300; line-height: 1.1; color: var(--white);
+  margin-bottom: 22px; letter-spacing: -1px;
   opacity: 0; transform: translateY(30px);
   animation: fadeIn 1.2s 0.5s var(--ease) forwards;
 }
-.hero-line-1 { display: block; white-space: nowrap; }
-.hero-line-2 { display: block; font-style: italic; color: rgba(255,255,255,0.6); white-space: nowrap; }
+.hero-line-1 { display: block; }
+.hero-line-2 { display: block; font-style: italic; color: rgba(255,255,255,0.6); }
 
 .hero-sub {
   font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.55);
@@ -1622,9 +1624,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   z-index: 5;
 }
 .founder-badge .badge-title {
-  font-family: var(--font-header);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
   letter-spacing: 2px;
 }
 .founder-badge .badge-subtitle {
@@ -1642,15 +1644,15 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   justify-content: center;
 }
 .founder-quote {
-  font-family: var(--font-header);
-  font-size: 1.4rem;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
   font-style: italic;
-  font-weight: 400;
-  color: #8c732b;
+  font-weight: 300;
+  color: var(--accent-dark);
   line-height: 1.6;
-  margin: 15px 0 25px;
-  border-left: 3px solid var(--accent);
-  padding-left: 20px;
+  margin: 12px 0 20px;
+  border-left: 2px solid var(--accent);
+  padding-left: 18px;
 }
 .founder-desc {
   font-size: 1.02rem;
@@ -1674,11 +1676,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .about-stats-luxury {
   display: flex;
   gap: 40px;
-  margin-top: 30px;
-  margin-bottom: 40px;
-  border-top: 1px solid rgba(201,168,76,0.15);
-  border-bottom: 1px solid rgba(201,168,76,0.15);
-  padding: 25px 0;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  padding: 20px 0;
 }
 .stat-luxury {
   display: flex;
@@ -1686,10 +1687,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   gap: 6px;
 }
 .stat-luxury .stat-num-wrap h3 {
-  font-family: var(--font-header);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--dark);
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--accent);
+  letter-spacing: -1px;
 }
 .stat-luxury span {
   font-family: var(--font-body);

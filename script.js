@@ -15,15 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Ensure Hero Video Plays ──
     const heroVideo = document.querySelector('.hero-video');
     if (heroVideo) {
-        // Attempt to play immediately
+        heroVideo.muted = true;
+        heroVideo.defaultMuted = true;
+        heroVideo.setAttribute('muted', '');
+        heroVideo.load();
         const playPromise = heroVideo.play();
         if (playPromise !== undefined) {
-            playPromise.catch(error => {
-                console.warn("Autoplay prevented by browser, waiting for user interaction.", error);
-                // Fallback: play on first user interaction
-                document.body.addEventListener('click', () => {
-                    heroVideo.play().catch(e => console.log("Still unable to play video.", e));
-                }, { once: true });
+            playPromise.catch(() => {
+                const playOnInteraction = () => {
+                    heroVideo.play().catch(() => {});
+                    document.removeEventListener('click', playOnInteraction);
+                    document.removeEventListener('touchstart', playOnInteraction);
+                    document.removeEventListener('scroll', playOnInteraction);
+                };
+                document.addEventListener('click', playOnInteraction, { once: true });
+                document.addEventListener('touchstart', playOnInteraction, { once: true });
+                document.addEventListener('scroll', playOnInteraction, { once: true, passive: true });
             });
         }
     }
