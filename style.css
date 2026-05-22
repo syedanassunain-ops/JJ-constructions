@@ -2094,16 +2094,16 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 
 /* --- Hero typography: narrower editorial --- */
-.hero-content { max-width: 760px !important; }
+.hero-content { max-width: 950px !important; }
 .hero-title {
   font-size: clamp(2.6rem, 5.5vw, 5.2rem) !important;
   font-weight: 300 !important;
   letter-spacing: -0.5px !important;
   line-height: 1.08 !important;
-  margin-bottom: 22px !important;
+  margin-bottom: 38px !important;
 }
 
-.hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.hero-actions { margin-top: 45px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
 
 /* --- Cinematic grain on dark sections --- */
 .section-dark { position: relative; overflow: hidden; }
@@ -2278,13 +2278,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   font-weight: 350 !important;
   line-height: 0.97 !important;
   letter-spacing: -2px !important;
-  margin-bottom: 26px !important;
+  margin-bottom: 38px !important;
 }
 .hero-sub {
   font-size: 1.05rem !important;
   font-weight: 300 !important;
   color: rgba(255,255,255,0.85) !important;
-  max-width: 500px !important;
+  max-width: 680px !important;
   line-height: 1.8 !important;
 }
 .hero-tag {
@@ -2292,7 +2292,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   letter-spacing: 3.5px !important;
   opacity: 0.8 !important;
   text-transform: uppercase !important;
-  margin-bottom: 28px !important;
+  margin-bottom: 36px !important;
 }
 
 
