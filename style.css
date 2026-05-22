@@ -170,8 +170,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .hero-line-2 { display: block; font-style: italic; color: rgba(255,255,255,0.6); }
 
 .hero-sub {
-  font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.55);
-  max-width: 520px; line-height: 1.75;
+  font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.6);
+  max-width: 500px; line-height: 1.75;
   opacity: 0; transform: translateY(20px);
   animation: fadeIn 1s 0.8s var(--ease) forwards;
 }
@@ -2085,15 +2085,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .hero-overlay {
   background: linear-gradient(180deg, rgba(6,6,6,0.44) 0%, rgba(6,6,6,0.18) 38%, rgba(6,6,6,0.70) 100%) !important;
 }
-.hero-video-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  backdrop-filter: blur(0.6px);
-  -webkit-backdrop-filter: blur(0.6px);
-  pointer-events: none;
-}
+
 
 /* --- Hero typography: narrower editorial --- */
 .hero-content { max-width: 760px !important; }
@@ -2104,14 +2096,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   line-height: 1.08 !important;
   margin-bottom: 22px !important;
 }
-.hero-sub {
-  font-size: 0.97rem !important;
-  line-height: 1.82 !important;
-  color: rgba(255,255,255,0.48) !important;
-  max-width: 430px !important;
-  font-weight: 300 !important;
-  letter-spacing: 0.015em !important;
-}
+
 .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 
 /* --- Cinematic grain on dark sections --- */
@@ -2287,8 +2272,14 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   font-weight: 350 !important;
   line-height: 0.97 !important;
   letter-spacing: -2px !important;
-  max-width: 9ch !important;
   margin-bottom: 26px !important;
+}
+.hero-sub {
+  font-size: 1.05rem !important;
+  font-weight: 300 !important;
+  color: rgba(255,255,255,0.85) !important;
+  max-width: 500px !important;
+  line-height: 1.8 !important;
 }
 .hero-tag {
   font-size: 0.76rem !important;
@@ -2297,14 +2288,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   text-transform: uppercase !important;
   margin-bottom: 28px !important;
 }
-.hero-sub {
-  max-width: 500px !important;
-  line-height: 1.82 !important;
-  opacity: 0.88 !important;
-  font-size: 0.98rem !important;
-  color: rgba(255,255,255,0.72) !important;
-  font-weight: 300 !important;
-}
+
 
 /* 3. SECTION SPACING — LUXURY BREATHING ROOM (+18%) */
 .section {
@@ -2374,7 +2358,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   background-size: 160px;
 }
 .hero { overflow: hidden; }
-.hero > * { position: relative; z-index: 2; }
+.hero > *:not(.hero-video-wrap) { position: relative; z-index: 2; }
 
 /* 9. ANIMATIONS — calmer, slower */
 [data-aos] {

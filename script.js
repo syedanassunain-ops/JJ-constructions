@@ -12,28 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── AOS ──
     AOS.init({ duration: 1000, easing: 'ease-out-cubic', once: true, offset: 80 });
 
-    // ── Ensure Hero Video Plays ──
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
-        heroVideo.muted = true;
-        heroVideo.defaultMuted = true;
-        heroVideo.setAttribute('muted', '');
-        heroVideo.load();
-        const playPromise = heroVideo.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                const playOnInteraction = () => {
-                    heroVideo.play().catch(() => {});
-                    document.removeEventListener('click', playOnInteraction);
-                    document.removeEventListener('touchstart', playOnInteraction);
-                    document.removeEventListener('scroll', playOnInteraction);
-                };
-                document.addEventListener('click', playOnInteraction, { once: true });
-                document.addEventListener('touchstart', playOnInteraction, { once: true });
-                document.addEventListener('scroll', playOnInteraction, { once: true, passive: true });
-            });
-        }
-    }
+
 
     // ── Smooth Scrolling for Anchor Links ──
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
