@@ -146,7 +146,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .hero-content {
   position: relative; z-index: 2;
-  padding-bottom: clamp(70px, 10vh, 120px);
+  padding-bottom: clamp(30px, 5vh, 70px);
   width: 100%; max-width: 1500px;
   margin: 0 auto;
   padding-left: clamp(20px, 4vw, 60px);
